@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+   <script src="script.js"></script>
+    <title>MyMovies</title>
+</head>
+<body>
+    <div class="container">
+        <div class="center">
+            <h1>Sign In</h1>
+            <form method="POST" action="" id="form">
+                <div class="txt_field">
+                    <input type="email" name="email" id="email" required>
+                    <span></span>
+                    <label>Email</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="password" id="email" required>
+                    <span></span>
+                    <label>Password</label>
+                </div>
+                <div class="txt_box">
+                    <input type="checkbox" name="remember-me" required>
+                    <span class="checkbox-container"></span>
+                    <label>Remember me</label>
+                </div>
+                <input name="Submit" type="Submit" value="Login" onclick="movies()">
+                <p id="error-message" style="color:red;display:none;"></p>
+            </form>
+        </div>
+    </div>
+    
+    </body>
+  </html>
