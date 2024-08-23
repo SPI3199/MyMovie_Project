@@ -1,60 +1,73 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Movie</title>
     <link rel="stylesheet" href="create.css">
-    <script src="create.js"></script>
-    <title>Document</title>
 </head>
 <body>
-        <div class="create-center">
-            <h3>Create a new movie</h3>
-            <form method="POST" action="">
-              <div class="create_form">
+    
+    <div class="create-center">
+        <h2>Create a new movie</h2>
+        <form id="movieForm" onsubmit="saveData(); return false;">
+<div class="grid">
+       <div class="create_form">
                 <div class="create_txt_field">
-                    <input type="title" name="title" id="title" required>
+                    <input type="text" id="title" name="title"  placeholder="Title" required>
                     <span></span>
-                    <label>Title</label>
                 </div>
-                <div class="create_txt_field">
-                    <input type="Publishing year" name="Publishing year"  id="Publishing" required>
+                <div class="create_txt_field_1">
+                    <input type="number" id="year" name="year"  placeholder="Year" required>
                     <span></span>
-                    <label>Publishing year</label>
                 </div>
-            </div>
-                <div class="create_upload_image" onclick="triggerFileInput()">
-                    
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                        <g clip-path="url(#clip0_3_604)">
-                        <path d="M18 15V18H6V15H4V18C4 19.1 4.9 20 6 20H18C19.1 20 20 19.1 20 18V15H18ZM17 11L15.59 9.59L13 12.17V4H11V12.17L8.41 9.59L7 11L12 16L17 11Z" fill="white"/>
-                        </g>
-                        <defs>
-                        <clipPath id="clip0_3_604">
-                        <rect width="24" height="24" fill="white"/>
-                        </clipPath>
-                        </defs>
-                        </svg>
-                       <h5> 
-                        Upload an image here</h5>
-                    <span></span>
-                    <input type="file" id="fileInput" style="display: none;">
                 </div>
-                
-
-                
+                <div class="create_upload_image" >
+                  
+                  <label for="image"><img src="assets/file_download_black_24dp 1.png" alt="" /><br/>Drop an image here
+                <label>
+                  
+                <input type="file" id="image" name="image" accept="image/*"  style="display: none;"  required>
+                </div>
                
                 <div class="buttons">
                     <div class="cancel-button">
                 <input name="cancel" type="Submit" value="Cancel" onclick="index()">
                 </div>
                 <div class="submit-button">
-                <input name="submit" type="Submit" value="Submit" onclick="my_movies()">
+                    <button  class="button"  type="submit" >Add Movie</button>
                 </div>
                 </div>
             </form>
-        
-        </div>
-   
+    </div>
+</div>
+
+
+
+    <script>
+        function saveData() {
+            const title = document.getElementById('title').value;
+            const year = document.getElementById('year').value;
+            const imageInput = document.getElementById('image').files[0];
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const movie = {
+                    title: title,
+                    year: year,
+                    image: event.target.result
+                };
+                let movies = JSON.parse(localStorage.getItem('movies')) || [];
+              
+                movies.push(movie);
+
+                localStorage.setItem('movies', JSON.stringify(movies));
+
+                window.location.href = 'movies.html';
+            };
+            reader.readAsDataURL(imageInput);
+        }
+    </script>
 </body>
 </html>

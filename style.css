@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 @layer base{
@@ -10,7 +11,6 @@
     --input-color:#224957;
     --card-color:#092C39;
 
- 
     --font: "Montserrat"
  }
   
@@ -31,8 +31,6 @@
     background: var(--background);
     height: 100vh;
     overflow: hidden;
-
-  
   }
   
   .center{
@@ -52,80 +50,103 @@
     font-size: 48px;
   }
   
-  .center form{
+
+ .center .form{
     box-sizing: border-box;
     width: 300px;
   }
   
-  form .txt_field{
+.txt_field{
     position: relative;
     margin: 30px 0;
     border-radius: 10px;
-    background-color: var(--input-color);
-    
+    background-color: var(--input-color); 
   }
-  
-  .txt_field input{
-    width: 100%;
-    padding: 0 5px;
-    height: 45px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
-   
-  }
-  
-  .txt_field label{
-    position: absolute;
-    padding-top: 15px;
-    padding-left: 10px;
-    left: 5px;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 16px;
-    pointer-events: none;
 
-  }
-  
+.label {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    display: none; 
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+   border: none;
+    border-radius: 4px;
+    margin-top: 5px;
+    border-radius: 10px;
+    background-color: var(--input-color);
+}
+
+
+.input-group{
+  padding-top: 20px;
+}
+
+.input-field.active {
+    color: #FFFFFF;
+}
+
+.input-group.active .label {
+    display: block;
+    border-color: #224957;
+}
+
+
+.input-field.invalid {
+    border:2px solid red;
+    color: #FFFFFF;
+}
+
+.input-group.invalid .label {
+    display: block;
+    color: red;
+}
+
+.message {
+    font-size: 14px;
+    color: red;
+    display: none;
+ text-align: start;
+ 
+}
+
+.message.active {
+    color: #FFFFFF;
+    display: block;
+}
+
+.message.invalid {
+    color: red;
+    display: block; 
+}
+
 .txt_box{
     padding-bottom: 30px;
-    color: #FFFFFF;
+  padding-top: 20px;
+  color: #FFFFFF;
 }
 
-
-
-
- .checkbox-container{
-    background-color: var(--input-color);
-
- }
-  input[type="Submit"]{
-    width: 100%;
-    height: 50px;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    color:#FFFFFF;
-    background-color: var(--primary);
-    border: none;
-
-  }
-  
-
-  
-
+.input[type="checkbox"]{
+  accent-color: red;
 }
 
-@layer page1{
-    .create-center h3{
-        text-align: center;
-        padding: 0 0 20px 0;
-        color:#fff;
-        font-family: var(--font);
-        font-weight: 600;
-        font-size: 48px;
-      }
+.button {
+  height: 54px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;  
+  border: none;
+  width: 100%;
+  background-color: var(--primary);
+  color: white;
 }
 
+}
