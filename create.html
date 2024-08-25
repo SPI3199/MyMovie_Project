@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add a Movie</title>
     <link rel="stylesheet" href="create.css">
+    <script src="create.js"></script>
+
+
 </head>
 <body>
     
     <div class="create-center">
         <h2>Create a new movie</h2>
-        <form id="movieForm" onsubmit="saveData(); return false;">
+        <form id="movieForm"  return false;">
 <div class="grid">
        <div class="create_form">
                 <div class="create_txt_field">
@@ -23,51 +26,30 @@
                     <span></span>
                 </div>
                 </div>
-                <div class="create_upload_image" >
-                  
-                  <label for="image"><img src="assets/file_download_black_24dp 1.png" alt="" /><br/>Drop an image here
-                <label>
-                  
-                <input type="file" id="image" name="image" accept="image/*"  style="display: none;"  required>
-                </div>
+                <div class="create_upload_image">
+                    <h1 class="upload-icon">
+                      <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                    </h1>
+                    <label for="image"><img src="assets/file_download_black_24dp 1.png" alt="" /><br/>Drop an image here
+                        <label>
+                          
+                        <input type="file"  class="file-uploader" id="image" name="image" accept="image/*" onchange="uploadData()"  style="display: none;"  required>
+          
+                  </div>
                
                 <div class="buttons">
                     <div class="cancel-button">
-                <input name="cancel" type="Submit" value="Cancel" onclick="index()">
+                <input name="cancel" type="Submit" value="Cancel" >
                 </div>
                 <div class="submit-button">
-                    <button  class="button"  type="submit" >Add Movie</button>
+                    <button  class="button"  type="submit" onclick="saveData()">Add Movie</button>
                 </div>
                 </div>
             </form>
     </div>
 </div>
 
+<!-- <div class="vector"><img src="assets/Vectors (1).svg"></div> -->
 
-
-    <script>
-        function saveData() {
-            const title = document.getElementById('title').value;
-            const year = document.getElementById('year').value;
-            const imageInput = document.getElementById('image').files[0];
-
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const movie = {
-                    title: title,
-                    year: year,
-                    image: event.target.result
-                };
-                let movies = JSON.parse(localStorage.getItem('movies')) || [];
-              
-                movies.push(movie);
-
-                localStorage.setItem('movies', JSON.stringify(movies));
-
-                window.location.href = 'movies.html';
-            };
-            reader.readAsDataURL(imageInput);
-        }
-    </script>
 </body>
 </html>
