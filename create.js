@@ -1,52 +1,49 @@
-function uploadData(){
-    const fileUploadInput = document.querySelector('.file-uploader');
-  // using index [0] to take the first file from the array
-  const image = fileUploadInput.files[0];
-  
-  // check if the file selected is not an image file
-  if (!image.type.includes('image')) {
-    return alert('Only images are allowed!');
+document.getElementById('image').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(fileReaderEvent) {
+      document.querySelector('.create_upload_image').style.backgroundImage = `url(${fileReaderEvent.target.result})`;
+  };
+
+  if (file) {
+      reader.readAsDataURL(file);
   }
-  
-  // check if size (in bytes) exceeds 10 MB
-  if (image.size > 10_000_000) {
-    return alert('Maximum upload size is 10MB!');
+});
+
+// Form submission and storing data in local storage
+document.getElementById('movieForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const title = document.getElementById('title').value;
+  const year = document.getElementById('year').value;
+  const image = document.getElementById('image').files[0];
+
+  // Get existing movies from local storage or initialize an empty array
+  let movies = JSON.parse(localStorage.getItem('movies')) || [];
+
+  if (image) {
+      const reader = new FileReader();
+      reader.onload = function() {
+          const movie = {
+              title: title,
+              year: year,
+              image: reader.result // Store the base64 image string
+          };
+
+          movies.push(movie);
+          localStorage.setItem('movies', JSON.stringify(movies)); // Save the array back to local storage
+
+          alert('Movie data saved to local storage!');
+          window.location.href = 'movies.html';
+      };
+      reader.readAsDataURL(image);
+  } else {
+      alert('Please upload an image to save the movie!');
   }
-  
-  const fileReader = new FileReader();
-    fileReader.readAsDataURL(image);
-  
-    
-    fileReader.onload = (fileReaderEvent) => {
-      const profilePicture = document.querySelector('.create_upload_image');
-      profilePicture.style.backgroundImage = `url(${fileReaderEvent.target.result})`;
-    }
-  }
-  
-  function saveData() {
-    const title = document.getElementById('title').value;
-    const year = document.getElementById('year').value;
-    const imageInput = document.getElementById('image').files[0];
-  
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        const movie = {
-            title: title,
-            year: year,
-            image: event.target.result
-        };
-        let movies = JSON.parse(localStorage.getItem('movies')) || [];
-      
-        movies.push(movie);
-  
-        localStorage.setItem('movies', JSON.stringify(movies));
-  
-        window.location.href = 'movies.html';
-    };
-    reader.readAsDataURL(imageInput);
-  
-  }
-  
+});
+
+
   
   // document.addEventListener('DOMContentLoaded', function() {
   //   document.getElementById('movieForm').addEventListener('submit', function(event) {

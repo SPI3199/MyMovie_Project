@@ -4,41 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="create.css">
-    <!-- <script src="edit.js"></script> -->
+    <script src="edit.js"></script>
+ 
     <title>Document</title>
 </head>
 <body>
         <div class="create-center">
             <h2 style="text-align: left">Edit</h2>
             <form id="editMovieForm"  return false;">
-                <div class="grid">
-                       <div class="create_form">
-                                <div class="create_txt_field">
-                                    <input type="text" id="title" name="title" placeholder="Title" required>
-                                    <span></span>
-                                    
-                                </div>
-                                <div class="create_txt_field_1">
-                                    <input type="number" id="year" name="year"  placeholder="Publishing year" required>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="create_upload_image" >
-                  
-                                <label for="image"><img src="assets/file_download_black_24dp 1.png" alt="" /><br/>Upload an image here
-                              <label>
-                                
-                                      <input type="file" id="image" name="image" accept="image/*"  style="display: none;"  required>
-                              </div>
-                                <div class="buttons">
-                                    <div class="cancel-button">
-                                <input name="cancel" type="Submit" value="Cancel" onclick="index()">
-                                </div>
-                                <div class="submit-button">
-                                    <button  class="button"  type="submit" onclick="saveChanges()">Update</button>
-                                </div>
-                                </div>
-                            </form>
-    </div>
+                    <div class="grid">
+                           <div class="create_form">
+                                    <div class="create_txt_field">
+                                        <input type="text" id="title" name="title"  placeholder="Title" required>
+                                        <span></span>
+                                    </div>
+                                    <div class="create_txt_field_1">
+                                        <input type="number" id="year" name="year"  placeholder="Year" required>
+                                        <span></span>
+                                    </div>
+                                    </div>
+                                    <div class="create_upload_image">
+                                        <h1 class="upload-icon">
+                                          <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                                        </h1>
+                                        <label for="image"><img src="assets/file_download_black_24dp 1.png" alt="" /><br/>Drop an image here
+                                            <label>
+                                              
+                                            <input type="file"  class="file-uploader" id="image" name="image" accept="image/*" style="display: none;"  required>
+                              
+                                      </div>
+                                   
+                                    <div class="buttons">
+                                        <div class="cancel-button">
+                                    <input name="cancel" type="Submit" value="Cancel" onclick="index()">
+                                    </div>
+                                    <div class="submit-button">
+                                        <button  class="button"  type="submit">Add Movie</button>
+                                    </div>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+
+                    
 </body>
 </html>
+                    
