@@ -79,6 +79,7 @@
         justify-items: start;
         position: relative;
        margin-top: 0;
+       margin-bottom: 24px;
         border-radius: 10px;
         background-color: var(--input-color);
         width: 65%;

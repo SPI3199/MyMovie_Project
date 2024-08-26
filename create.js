@@ -19,6 +19,7 @@ document.getElementById('movieForm').addEventListener('submit', function(event) 
   const year = document.getElementById('year').value;
   const image = document.getElementById('image').files[0];
 
+
   // Get existing movies from local storage or initialize an empty array
   let movies = JSON.parse(localStorage.getItem('movies')) || [];
 
@@ -34,7 +35,6 @@ document.getElementById('movieForm').addEventListener('submit', function(event) 
           movies.push(movie);
           localStorage.setItem('movies', JSON.stringify(movies)); // Save the array back to local storage
 
-          alert('Movie data saved to local storage!');
           window.location.href = 'movies.html';
       };
       reader.readAsDataURL(image);
